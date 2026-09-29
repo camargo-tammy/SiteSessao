@@ -52,37 +52,3 @@ botao.disabled = false;
 botao.textContent = "Enviar";
 });
 });
-
-Postada por VLADISMARA PSYCH MARTINS
-VLADISMARA PSYCH MARTINS
-Criado em: 22 de set.22 de set. (editado: 08:23)
-HTML - RODAPE
-
-<footer id="fim">
-<div class="texto">
-<p><strong>Desenvolvido por:</strong> <em>Vladismara Psych Martins</em><br>
-WhatsApp: (43) 9 9912-5115 | vladismara@gmail.com
-</p>
-<!-- Código anterior:
-<a class="voltar" href="#inicio">Voltar ao início</a>
-</div>
-</footer>
-
-
-/* CSS RODAPÉ */
-footer {
-min-height: 7em;
-color: var(--verde-profundo);
-background-color: var(--verde-claro);
-display: flex;
-justify-content: center;
-align-items: center;
-text-align: center;
-padding: 20px;
-border-radius: 5px;
-}
-
-footer p {
-line-height: 1.5;
-}
-
