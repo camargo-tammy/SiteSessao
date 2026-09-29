@@ -1,501 +1,919 @@
-/* TEMA CLARO */
+/* =========================================================
+   RESET
+========================================================= */
 
-/* TODOS ELEMENTOS E CORPO DA PÁGINA (sofrerão esses efeitos) */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
+/* =========================================================
+   VARIÁVEIS DO TEMA CLARO
+========================================================= */
+
+:root {
+
+    --fundo: #f3f0df;
+    --texto: #26351c;
+
+    --cabecalho: #d2ddbe;
+    --cabecalho-texto: #19240f;
+
+    --card: #fffef9;
+
+    --verde: #52702f;
+    --verde-escuro: #2e431c;
+    --verde-claro: #aecc7e;
+
+    --borda: #d2ddbe;
+
+    --dourado: #9f7f40;
+
+    --sombra: rgba(46, 67, 28, 0.18);
+
+    --input-fundo: #ffffff;
+    --input-texto: #26351c;
+}
+
+
+/* =========================================================
+   TEMA ESCURO
+========================================================= */
+
+body.tema-escuro {
+
+    --fundo: #1c2218;
+    --texto: #e8efda;
+
+    --cabecalho: #304127;
+    --cabecalho-texto: #ffffff;
+
+    --card: #262f22;
+
+    --verde: #aecc7e;
+    --verde-escuro: #e8efda;
+    --verde-claro: #405231;
+
+    --borda: #4b5d3e;
+
+    --dourado: #deb25b;
+
+    --sombra: rgba(0, 0, 0, 0.35);
+
+    --input-fundo: #ffffff;
+    --input-texto: #1c2218;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
+
     font-family: Arial, sans-serif;
+
     line-height: 1.6;
-    background-color: beige;
-    color: darkgreen;
+
+    background-color: var(--fundo);
+
+    color: var(--texto);
+
     padding: clamp(6px, 2vw, 16px);
-    /* clamp(mínimo, ideal, máximo) - 2VW = 2% da tela / viewport width */
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
 }
 
 
-/* INICIO DO CABECALHO */
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
 .cabecalho {
-    background-color: #d2ddbe;
-    color: darkgreen;
+
+    background-color: var(--cabecalho);
+
+    color: var(--cabecalho-texto);
+
     display: flex;
-    /* deixa o conteudo flex p adaptar a varios tipos de tela */
+
     justify-content: space-between;
-    /*espaço entre uma coisa e outra */
+
     align-items: center;
-    /*alinhamento*/
+
     gap: 20px;
-    /* so funciona se usar com display flex e é o espaço "como se fosse" um padding */
+
     padding: 12px 20px;
-    border-radius: 5px;
-    /* arredonda os cantos */
+
+    border-radius: 8px;
+
+    box-shadow: 0 4px 12px var(--sombra);
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
 }
+
+
+/* =========================================================
+   MARCA
+========================================================= */
 
 .cabecalho-marca {
+
     display: flex;
+
     align-items: center;
+
     gap: 12px;
+
+    min-width: 0;
 }
+
+
+/* IMAGEM DO CABEÇALHO */
 
 .cabecalho-imagem {
+
     width: 150px;
+
     height: 90px;
+
     object-fit: cover;
-    border-radius: 5px;
+
+    object-position: center;
+
+    border-radius: 8px;
+
+    display: block;
+
+    flex-shrink: 0;
 }
+
+
+/* SUBTÍTULO */
 
 .cabecalho-subtitulo {
+
     font-size: 14px;
-    color: #9f7f40;
+
+    color: var(--dourado);
+
+    margin-bottom: 2px;
 }
+
+
+/* TÍTULO */
 
 .cabecalho-titulo {
-    color: #414c2f;
-    font-size: clamp (34px, 5vw, 58px);
-    color: #52702f;
+
+    color: var(--verde);
+
+    font-size: clamp(30px, 5vw, 58px);
+
+    line-height: 1.1;
+
+    white-space: nowrap;
 }
 
+
+/* =========================================================
+   MENU
+========================================================= */
+
 .cabecalho-lista {
+
     list-style: none;
+
     display: flex;
+
     flex-wrap: wrap;
+
     justify-content: center;
+
+    align-items: center;
+
     gap: 8px;
 }
 
+
 .cabecalho-lista-item {
+
     display: block;
 }
 
+
 .cabecalho a {
-    color: #19240f;
-    font-family: Calibri, sans-serif;
+
+    color: var(--cabecalho-texto);
+
+    font-family: Calibri, Arial, sans-serif;
+
     font-size: 20px;
+
     text-decoration: none;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
-    gap: 6px;
-    padding: 6px 8px;
-    border-radius: 4px;
+
+    padding: 8px 12px;
+
+    border-radius: 6px;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
 }
+
 
 .cabecalho a:hover {
-    background-color: #EBF1E0;
-    color: #2e431c;
+
+    background-color: rgba(255, 255, 255, 0.35);
+
+    color: var(--verde-escuro);
 }
+
+
+/* =========================================================
+   BOTÃO DO TEMA
+========================================================= */
 
 .botao-tema {
+
     border: none;
-    border-radius: 4px;
-    padding: 8px 10px;
-    color: #fcf8ec;
-    background-color: #52702f;
-    font-family: Calibri, sans-serif;
-    font-size: 18px;
+
+    border-radius: 6px;
+
+    padding: 10px 14px;
+
+    color: #ffffff;
+
+    background-color: var(--verde);
+
+    font-family: Calibri, Arial, sans-serif;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
     cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
 }
+
 
 .botao-tema:hover {
-    background-color: #2e431c;
+
+    background-color: var(--verde-escuro);
+
+    color: var(--fundo);
+
+    transform: translateY(-1px);
 }
 
 
-/* SEÇÃO "DESCRIÇÃO" DO CABEÇALHO */
+/* =========================================================
+   TÍTULOS DAS SEÇÕES
+========================================================= */
+
 .descricao {
+
     text-align: center;
-    margin: 2em 0;
-    text-shadow: 2px 2px 5px #2e431c2e;
+
+    margin: 2.5em 0 1.5em;
+
+    text-shadow: 2px 2px 5px var(--sombra);
 }
+
 
 .descricao h2,
 .fale-conosco h2 {
+
     font-size: clamp(28px, 4vw, 44px);
+
     line-height: 1.2;
-    color: #2e431c;
+
+    color: var(--verde-escuro);
 }
 
-/* xxxxxxxxxxxxxxxxxx 01/09 xxxxxxxxxxxxxxxxxxxxxxxxxx */
 
-/* Seções "SEÇÃO"  com texto e imagens */
+/* =========================================================
+   SEÇÕES DE TEXTO E IMAGENS
+========================================================= */
+
 .secao {
+
     max-width: 1200px;
-    margin: 0 auto 2em;
-    padding: 18px;
+
+    margin: 0 auto 2.5em;
+
+    padding: 22px;
+
     display: flex;
-    gap: 22px;
-    background-color: #FFFEF9;
-    border-radius: 5px;
-    box-shadow: 8px 8px 18px #2E431C2E;
+
+    align-items: center;
+
+    gap: 30px;
+
+    background-color: var(--card);
+
+    border-radius: 10px;
+
+    box-shadow: 8px 8px 18px var(--sombra);
+
+    transition:
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
+
+
+/* =========================================================
+   TEXTO
+========================================================= */
 
 .texto {
-    flex: 1;
+
+    flex: 1 1 55%;
+
     align-self: center;
-    padding: 0 20px;
+
+    padding: 0 10px;
+
     max-width: 70ch;
 }
 
-.texto h2 {
-    margin-bottom: 1em;
-    text-align: center;
-}
 
 .texto p {
+
     line-height: 1.8;
+
     margin-top: 1em;
-    text-align: left;
+
+    text-align: justify;
 }
+
+
+.texto p:first-child {
+
+    margin-top: 0;
+}
+
+
+/* =========================================================
+   IMAGENS
+========================================================= */
 
 .imagem {
-    flex: 1;
-    text-align: center;
+
+    flex: 1 1 45%;
+
+    width: 100%;
+
     display: grid;
-    gap: 10px;
+
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+
+    min-width: 0;
 }
+
 
 .imagem img {
-    /*as img que fazem parte da classe imagem */
+
     width: 100%;
-    height: 260px;
+
+    height: 240px;
+
+    display: block;
+
     object-fit: cover;
-    border-radius: 8px;
+
+    object-position: center;
+
+    border-radius: 10px;
+
+    box-shadow: 0 3px 10px var(--sombra);
+
+    transition:
+        transform 0.25s ease,
+        filter 0.25s ease;
 }
 
 
-/* xxxxxxxxxxxxx secao CONTATO xxxxxxxxxxxxxx */
+.imagem img:hover {
+
+    transform: scale(1.02);
+
+    filter: brightness(1.04);
+}
+
+
+/* =========================================================
+   FORMULÁRIO
+========================================================= */
+
 .fale-conosco {
-    /*  22/09  */
+
     max-width: 600px;
-    margin: 0 auto 2em;
+
+    margin: 0 auto 2.5em;
+
     padding: clamp(18px, 4vw, 28px);
-    background-color: #FFFEF9;
-    border-radius: 5px;
-    box-shadow: 8px 18px #2e431c2e;
+
+    background-color: var(--card);
+
+    border-radius: 10px;
+
+    box-shadow: 8px 8px 18px var(--sombra);
+
+    transition:
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
+
 
 .fale-conosco h2,
-/* titulo e paragrafo */
-.fale-conosco>p {
+.fale-conosco > p {
+
     margin-bottom: 15px;
+
     text-align: center;
 }
 
+
 .fale-conosco form {
-    /* formulario  */
+
     display: flex;
+
     flex-direction: column;
 }
 
+
 .fale-conosco label {
-    /* label = legendas */
+
     margin-top: 10px;
+
     margin-bottom: 5px;
-    color: #52702f;
+
+    color: var(--verde);
+
     font-weight: bold;
 }
+
 
 .fale-conosco input,
-/* caixas de entrada de texto  */
 .fale-conosco textarea {
-    padding: 10px;
-    border: 1px solid #d2ddbe;
-    border-radius: 4px;
+
+    width: 100%;
+
+    padding: 11px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 6px;
+
     font-family: Arial, sans-serif;
+
     font-size: 16px;
+
+    background-color: var(--input-fundo);
+
+    color: var(--input-texto);
+
+    transition:
+        border-color 0.2s ease,
+        outline 0.2s ease;
 }
 
-/* 22/09 */
+
 .fale-conosco input::placeholder,
-/* ajuda que é escrita dentro dos inputs */
 .fale-conosco textarea::placeholder {
-    color: #5C614C;
+
+    color: #6b705f;
 }
 
-.fale-conosco textarea {
-    resize: vertical;
-}
-
-.fale-conosco input:focus,
-/* onde ficara o foco / cursor */
-.fale-conosco textarea:focus {
-    outline: 2px solid #C5973E;
-}
-
-.fale-conosco button {
-    /* botao da secao contato */
-    margin-top: 20px;
-    padding: 12px;
-    border: none;
-    border-radius: 4px;
-    color: #FFFFFF;
-    background-color: #52702F;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.fale-conosco button:hover {
-    /* efeito do botao ao passar o mouse */
-    background-color: #2E431C;
-}
-
-.fale-conosco button:disabled {
-    /* botao desabilitado  */
-    background-color: #808080;
-    cursor: wait;
-}
-
-.fale-conosco .aviso-formulario {
-    /* alerta de aviso do form */
-    margin-top: 12px;
-    margin-bottom: 0;
-    color: #5C614C;
-    font-size: 13px;
-}
-
-.fale-conosco .sucesso {
-    /* aviso de sucesso do form */
-    color: #236730;
-    font-weight: bold;
-}
-
-.fale-conosco .erro {
-    /* aviso de erro */
-    color: #912E23;
-    font-weight: bold;
-}
-
-
-/*  voltar */
-.voltar {
-    position: fixed;
-    right: 18px;
-    bottom: 18px;
-    z-index: 10;
-    /* Ajuste: usamos flex para centralizar a seta dentro de um botão redondo. */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 44px;
-    height: 44px;
-    color: #FFFFFF;
-    background-color: #aecc7e;
-    border-radius: 50%;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 1;
-    opacity: 0.85;
-    box-shadow: 0 3px 9px #2e431c47;
-}
-
-.voltar:hover {
-    background-color:#2e431c;
-    opacity: 1;
-}
-
-
-
-
-/*14/09 - TEMA ESCURO */
-
-body.tema-escuro {
-    background-color: #1C2218;
-    color: #E8EFDA;
-}
-
-body.tema-escuro .cabecalho a {
-    color: #FFFFFF;
-}
-
-body.tema-escuro .cabecalho {
-    background-color: #304127;
-    color: #E8EFDA;
-}
-
-body.tema-escuro .cabecalho-subtitulo {
-    color: #DEB25B;
-}
-
-body.tema-escuro .cabecalho-titulo,
-body.tema-escuro .fale-conosco label {
-    color: #AECC7E;
-}
-
-body.tema-escuro .cabecalho a {
-    color: #FFFFFF;
-}
-
-body.tema-escuro .cabecalho a:hover {
-    background-color: #405231;
-    color: #E8EFDA;
-}
-
-body.tema-escuro .botao-tema,
-body.tema-escuro .fale-conosco button,
-body.tema-escuro .voltar {
-    color: #FFFFFF;
-    background-color: #AECC7E;
-}
-
-body.tema-escuro .botao-tema:hover,
-body.tema-escuro .fale-conosco button:hover,
-body.tema-escuro .voltar:hover {
-    background-color: #E8EFDA;
-    color: #1C2218;
-}
-
-body.tema-escuro .descricao h2,
-body.tema-escuro .fale-conosco h2,
-body.tema-escuro footer {
-    color: #E8EFDA;
-}
-
-body.tema-escuro .secao,
-body.tema-escuro .fale-conosco {
-    background-color: #262F22;
-    box-shadow: 8px 8px 18px #00000059;
-}
-
-body.tema-escuro .fale-conosco input,
-body.tema-escuro .fale-conosco textarea {
-    border: 1px solid #304127;
-    background-color: #FFFFFF;
-    color: #1C2218;
-}
 
 body.tema-escuro .fale-conosco input::placeholder,
-body.tema-escuro .fale-conosco textarea::placeholder,
-body.tema-escuro .fale-conosco .aviso-formulario {
-    color: #CBD4BE;
+body.tema-escuro .fale-conosco textarea::placeholder {
+
+    color: #666666;
 }
 
-body.tema-escuro .fale-conosco input:focus,
-body.tema-escuro .fale-conosco textarea:focus {
-    outline: 2px solid #DEB25B;
+
+.fale-conosco textarea {
+
+    resize: vertical;
+
+    min-height: 130px;
 }
+
+
+.fale-conosco input:focus,
+.fale-conosco textarea:focus {
+
+    outline: 2px solid var(--dourado);
+
+    border-color: var(--dourado);
+}
+
+
+/* =========================================================
+   BOTÃO ENVIAR
+========================================================= */
+
+.fale-conosco button {
+
+    margin-top: 20px;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    color: #ffffff;
+
+    background-color: var(--verde);
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.fale-conosco button:hover {
+
+    background-color: var(--verde-escuro);
+
+    color: var(--fundo);
+
+    transform: translateY(-1px);
+}
+
+
+.fale-conosco button:disabled {
+
+    background-color: #808080;
+
+    color: #ffffff;
+
+    cursor: wait;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   AVISOS DO FORMULÁRIO
+========================================================= */
+
+.fale-conosco .aviso-formulario {
+
+    margin-top: 12px;
+
+    margin-bottom: 0;
+
+    color: var(--texto);
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+
+.fale-conosco .sucesso {
+
+    color: #236730;
+
+    font-weight: bold;
+}
+
+
+.fale-conosco .erro {
+
+    color: #912e23;
+
+    font-weight: bold;
+}
+
 
 body.tema-escuro .fale-conosco .sucesso {
-    color: #8FD397;
+
+    color: #8fd397;
 }
+
 
 body.tema-escuro .fale-conosco .erro {
-    color: #E88474;
-}
 
-body.tema-escuro footer {
-    background-color: #304127;
-}
-
-body.tema-escuro .fale-conosco button:disabled {
-    background-color: #696F64;
-    color: #FFFFFF;
-}
-
-body.tema-escuro .descricao {
-    text-shadow: 2px 2px 5px #00000059;
-}
-
-body.tema-escuro .voltar {
-    box-shadow: 0 3px 9px #00000073;
-}
-
-/*AJUSTES PARA TELAS DE CELULARES E TABLETS */
-@media (max-width: 800px) {
-body {
-padding: 6px;
-font-size: 14px;
-}
-
-.secao {
-flex-direction: column;
-padding: 14px;
-}
-
-.texto,
-.imagem {
-padding: 6px;
-}
-
-.texto {
-max-width: 100%;
-}
-
-.texto p {
-text-align: left;
-line-height: 1.7;
-}
-
-.cabecalho {
-flex-direction: column;
-text-align: center;
-padding: 14px;
-}
-
-.cabecalho-marca {
-flex-direction: column;
-width: min(520px, 100%);
-}
-
-.cabecalho-subtitulo {
-width: 100%;
-text-align: left;
-}
-
-.cabecalho-imagem {
-width: min(280px, 80vw);
-height: 150px;
-margin-bottom: 10px;
-}
-
-.cabecalho-lista {
-width: 100%;
-gap: 6px;
-}
-
-.cabecalho a {
-font-size: 17px;
-background-color: #EBF1E0;
-}
-
-.botao-tema {
-width: 100%;
-max-width: 280px;
-font-size: 17px;
-}
-
-footer .texto {
-max-width: 100%;
-text-align: center;
-}
-
-footer .texto p {
-text-align: center;
-}
-
-.imagem img {
-height: 220px;
-}
+    color: #e88474;
 }
 
 
+/* =========================================================
+   RODAPÉ
+========================================================= */
 
 footer {
-min-height: 7em;
-color: var(--verde-profundo);
-background-color: var(--verde-claro);
-display: flex;
-justify-content: center;
-align-items: center;
-text-align: center;
-padding: 20px;
-border-radius: 5px;
+
+    min-height: 7em;
+
+    color: var(--texto);
+
+    background-color: var(--cabecalho);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 20px;
+
+    border-radius: 8px;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
 }
 
+
 footer p {
-line-height: 1.5;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   BOTÃO VOLTAR AO TOPO
+========================================================= */
+
+.voltar {
+
+    position: fixed;
+
+    right: 18px;
+
+    bottom: 18px;
+
+    z-index: 10;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    width: 44px;
+
+    height: 44px;
+
+    color: #ffffff;
+
+    background-color: var(--verde);
+
+    border-radius: 50%;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    font-size: 24px;
+
+    line-height: 1;
+
+    opacity: 0.9;
+
+    box-shadow: 0 3px 9px var(--sombra);
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.voltar:hover {
+
+    background-color: var(--verde-escuro);
+
+    color: var(--fundo);
+
+    opacity: 1;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   CELULAR E TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    body {
+
+        padding: 6px;
+
+        font-size: 15px;
+    }
+
+
+    .cabecalho {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        padding: 16px;
+    }
+
+
+    .cabecalho-marca {
+
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+
+    .cabecalho-imagem {
+
+        width: min(320px, 85vw);
+
+        height: 180px;
+    }
+
+
+    .cabecalho-subtitulo {
+
+        width: 100%;
+
+        text-align: center;
+    }
+
+
+    .cabecalho-titulo {
+
+        white-space: normal;
+
+        font-size: clamp(32px, 8vw, 48px);
+    }
+
+
+    .cabecalho-lista {
+
+        width: 100%;
+
+        gap: 6px;
+    }
+
+
+    .cabecalho a {
+
+        font-size: 17px;
+
+        padding: 8px 10px;
+    }
+
+
+    .botao-tema {
+
+        width: 100%;
+
+        max-width: 280px;
+    }
+
+
+    .secao {
+
+        flex-direction: column;
+
+        padding: 16px;
+
+        gap: 20px;
+    }
+
+
+    .texto {
+
+        width: 100%;
+
+        max-width: 100%;
+
+        padding: 0;
+    }
+
+
+    .texto p {
+
+        text-align: left;
+
+        line-height: 1.7;
+    }
+
+
+    .imagem {
+
+        width: 100%;
+    }
+
+
+    .imagem img {
+
+        height: 260px;
+    }
+}
+
+
+/* =========================================================
+   CELULAR PEQUENO
+========================================================= */
+
+@media (max-width: 500px) {
+
+    .cabecalho-imagem {
+
+        width: 100%;
+
+        max-width: 280px;
+
+        height: 160px;
+    }
+
+
+    .cabecalho-lista {
+
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+
+    .cabecalho-lista-item {
+
+        width: 100%;
+    }
+
+
+    .cabecalho a {
+
+        width: 100%;
+
+        background-color: rgba(255, 255, 255, 0.25);
+    }
+
+
+    .secao {
+
+        padding: 14px;
+    }
+
+
+    .imagem img {
+
+        height: 200px;
+    }
+
+
+    .fale-conosco {
+
+        padding: 18px 14px;
+    }
+
+
+    .voltar {
+
+        width: 40px;
+
+        height: 40px;
+
+        right: 12px;
+
+        bottom: 12px;
+    }
 }
